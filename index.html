@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comunicações I — Material Didático</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #faf7f2;
+    --panel: #ffffff;
+    --line: #e6ded2;
+    --ink: #2a2620;
+    --ink-muted: #6b6255;
+    --ink-faint: #a39c8c;
+    --accent: #a8452e;
+    --accent-soft: #a8452e14;
+    --accent2: #3d5a4c;
+    --serif: 'Source Serif 4', Georgia, serif;
+    --body: 'Inter', sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--body);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: inherit; text-decoration: none; }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+  .wrap { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+
+  /* ---------- HEADER PHOTO ---------- */
+  .header-photo {
+    position: relative;
+    width: 100%;
+    height: 320px;
+    overflow: hidden;
+    background:
+      linear-gradient(180deg, rgba(42,38,32,0.05) 0%, rgba(42,38,32,0.55) 100%),
+      linear-gradient(135deg, #d8cdb8 0%, #b9ab8d 45%, #8f7f63 100%);
+    display: flex;
+    align-items: flex-end;
+  }
+  /*
+    SUBSTITUA A IMAGEM: troque o background acima por
+    background-image: url('sua-foto.jpg'); background-size: cover; background-position: center;
+    (mantenha o gradiente escuro por cima para o texto continuar legível, ex:
+    background: linear-gradient(180deg, rgba(42,38,32,0.05), rgba(42,38,32,0.6)), url('sua-foto.jpg');
+    background-size: cover; background-position: center;)
+  */
+  .header-photo .wrap {
+    width: 100%;
+    padding-bottom: 40px;
+  }
+  .header-photo-hint {
+    position: absolute;
+    top: 16px;
+    right: 24px;
+    font-family: var(--mono);
+    font-size: 10.5px;
+    color: #ffffffaa;
+    background: #00000030;
+    padding: 4px 9px;
+    border-radius: 3px;
+    letter-spacing: 0.04em;
+  }
+
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #fff;
+    opacity: 0.85;
+    margin-bottom: 10px;
+  }
+
+  h1 {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: clamp(2.2rem, 5vw, 3.2rem);
+    letter-spacing: -0.01em;
+    line-height: 1.05;
+    color: #fff;
+  }
+
+  /* ---------- SUBHEADER META ---------- */
+  .subheader {
+    background: var(--panel);
+    border-bottom: 1px solid var(--line);
+    padding: 22px 0;
+  }
+  .subheader .wrap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 14px;
+  }
+  .hero-sub {
+    max-width: 50ch;
+    color: var(--ink-muted);
+    font-size: 15px;
+  }
+  .hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 22px;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--ink-faint);
+  }
+  .hero-meta strong { color: var(--ink-muted); font-weight: 600; }
+
+  .forum-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--mono);
+    font-size: 12.5px;
+    color: var(--accent2);
+    border: 1px solid #3d5a4c33;
+    padding: 7px 13px;
+    border-radius: 4px;
+    white-space: nowrap;
+    transition: background 0.15s ease;
+  }
+  .forum-link:hover { background: #3d5a4c0d; }
+
+  /* ---------- BLOCKS ---------- */
+  main { padding: 48px 0 80px; }
+
+  .block { margin-bottom: 46px; }
+
+  .block-head {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--ink);
+  }
+  .block-num {
+    font-family: var(--mono);
+    font-size: 12.5px;
+    color: var(--accent);
+  }
+  .block-title {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 22px;
+  }
+
+  .topic {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 15px 4px;
+    border-bottom: 1px solid var(--line);
+    transition: background 0.15s ease;
+  }
+  .topic:hover { background: #f2ece1; }
+
+  .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent2);
+    margin-top: 9px;
+    flex-shrink: 0;
+  }
+
+  .topic-body { flex: 1; }
+
+  .topic-title {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--ink);
+  }
+
+  .downloads { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 9px; }
+
+  .dl {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--accent);
+    border: 1px solid #a8452e33;
+    padding: 5px 11px;
+    border-radius: 4px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: border-color 0.15s ease, background 0.15s ease;
+  }
+  .dl:hover { border-color: var(--accent); background: var(--accent-soft); }
+  .dl::before { content: '↓'; }
+
+  .dl-empty {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--ink-faint);
+    margin-top: 9px;
+    display: block;
+  }
+
+  .topic.prova .dot { background: var(--accent); }
+  .topic.prova .topic-title { color: var(--accent); }
+
+  /* ---------- FOOTER ---------- */
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 26px 0 40px;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--ink-faint);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  footer a { color: var(--accent2); }
+</style>
+</head>
+<body>
+
+<div class="header-photo">
+  <span class="header-photo-hint">substituir por foto — ver comentário no HTML</span>
+  <div class="wrap">
+    <div class="eyebrow">UFRJ · Voluntário — Material Aberto</div>
+    <h1>Comunicações I</h1>
+  </div>
+</div>
+
+<div class="subheader">
+  <div class="wrap">
+    <p class="hero-sub">
+      Dos fundamentos de sinais e sistemas à modulação analógica e à introdução às comunicações digitais.
+    </p>
+    <a class="forum-link" href="https://github.com/SEU_USUARIO/comunicacoes1/discussions">Fórum de Discussões →</a>
+  </div>
+  <div class="wrap" style="margin-top: 14px;">
+    <div class="hero-meta">
+      <span><strong>Prof.</strong> André Noll B.</span>
+      <span><strong>Formato</strong> 3 blocos · 3 provas</span>
+      <span><strong>Licença</strong> Uso livre para fins educacionais</span>
+    </div>
+  </div>
+</div>
+
+<main class="wrap">
+
+  <section class="block">
+    <div class="block-head">
+      <span class="block-num">Bloco 1</span>
+      <span class="block-title">Introdução e Revisão</span>
+    </div>
+    <div class="topic"><span class="dot"></span><div class="topic-body"><div class="topic-title">O que são comunicações</div><span class="dl-empty">material em breve</span></div></div>
+    <div class="topic"><span class="dot"></span><div class="topic-body"><div class="topic-title">Sinais, Sistemas Lineares e Convolução</div><span class="dl-empty">material em breve</span></div></div>
+    <div class="topic"><span class="dot"></span><div class="topic-body"><div class="topic-title">Série e Transformada de Fourier</div><span class="dl-empty">material em breve</span></div></div>
+    <div class="topic"><span class="dot"></span><div class="topic-body"><div class="topic-title">Domínio da Frequência e Resposta de Sistemas</div><span class="dl-empty">material em breve</span></div></div>
+    <div class="topic"><span class="dot"></span><div class="topic-body"><div class="topic-title">Densidade Espectral de Potência</div><span class="dl-empty">material em breve</span></div></div>
+    <div class="topic"><span class="dot"></span><div class="topic-body"><div class="topic-title">Envoltória Complexa</div><span class="dl-empty">material em breve</span></div></div>
+    <div class="topic"><span class="dot"></span><div class="topic-body"><div class="topic-title">Cálculos em dB + Ruído Branco</div><span class="dl-empty">material em breve</span></div></div>
+    <div class="topic prova"><span class="dot"></span><div class="topic-body"><div class="topic-title">Prova 1</div><span class="dl-empty">material em breve</span></div></div>
+  </section>
+
+  <section class="block">
+    <div class="block-head">
+      <span class="block-num">Bloco 2</span>
+      <span class="block-title">Modulação Analógica</span>
+    </div>
+    <div class="topic"><span class="dot"></span><div class="topic-body"><div class="topic-title">AM-DSB</div><span class="dl-empty">material em breve</span></div></div>
+    <div class="topic"><span class="dot"></span><div class="topic-body"><div class="topic-title">AM-SSB / VSB</div><span class="dl-empty">material em breve</span></div></div>
+    <div class="topic"><span class="dot"></span><div class="topic-body"><div class="topic-title">FM / PM</div><span class="dl-empty">material em breve</span></div></div>
+    <div class="topic"><span class="dot"></span><div class="topic-body"><div class="topic-title">Desempenho em Ruído — AM vs. FM</div><span class="dl-empty">material em breve</span></div></div>
+    <div class="topic"><span class="dot"></span><div class="topic-body"><div class="topic-title">Receptor Superheterodino + FDM</div><span class="dl-empty">material em breve</span></div></div>
+    <div class="topic"><span class="dot"></span><div class="topic-body"><div class="topic-title">Análise de Sistemas / Orçamento de Enlace</div><span class="dl-empty">material em breve</span></div></div>
+    <div class="topic prova"><span class="dot"></span><div class="topic-body"><div class="topic-title">Prova 2</div><span class="dl-empty">material em breve</span></div></div>
+  </section>
+
+  <section class="block">
+    <div class="block-head">
+      <span class="block-num">Bloco 3</span>
+      <span class="block-title">Introdução a Comunicações Digitais</span>
+    </div>
+    <div class="topic"><span class="dot"></span><div class="topic-body"><div class="topic-title">Amostragem</div><span class="dl-empty">material em breve</span></div></div>
+    <div class="topic"><span class="dot"></span><div class="topic-body"><div class="topic-title">Quantização + Companding</div><span class="dl-empty">material em breve</span></div></div>
+    <div class="topic"><span class="dot"></span><div class="topic-body"><div class="topic-title">PCM</div><span class="dl-empty">material em breve</span></div></div>
+    <div class="topic"><span class="dot"></span><div class="topic-body"><div class="topic-title">DPCM + Modulação
