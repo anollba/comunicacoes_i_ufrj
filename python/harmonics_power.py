@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-Nmax = 100
+Nmax = 20
 
 n = np.arange(1, Nmax + 1)
 
@@ -10,13 +10,13 @@ an = (2/(n*np.pi))*np.sin(n*np.pi/2)
 
 P = []
 
-for N in range(1, Nmax + 1):
+for N in range(0, Nmax + 1):
     PN = a0**2 + 0.5*np.sum(an[:N]**2)
     P.append(PN)
 
 plt.figure(figsize=(8,4))
 
-plt.plot(range(1, Nmax+1), P, lw=2,
+plt.plot(range(0, Nmax+1), P, lw=2,
          label='Potência acumulada')
 
 plt.axhline(
@@ -31,5 +31,5 @@ plt.ylabel('Potência')
 plt.title('Convergência da potência (T = T0/2)')
 plt.grid(True)
 plt.legend()
-
-plt.show()
+plt.ylim(bottom=0)
+plt.xlim(0, Nmax)
